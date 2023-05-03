@@ -1,10 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+/* eslint-disable no-unused-vars */
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+import { Provider } from "react-redux";
+import strore from "./store/Store";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={strore}>
     <App />
-  </React.StrictMode>,
-)
+  </Provider>
+);
