@@ -21,7 +21,7 @@ function* getSongs() {
     yield put(getSongsFailure(e.message));
   }
 }
-
+// get song saga
 export function* getSongsSaga() {
   yield takeEvery("songs/getSongsFetch", getSongs);
 }
@@ -36,6 +36,7 @@ function* addsong(action) {
   }
 }
 
+// add song saga
 export function* addSongSaga() {
   yield takeEvery("songs/addSongFetch", addsong);
 }
@@ -49,6 +50,7 @@ function* editsong(action) {
   }
 }
 
+// edit song saga
 export function* editSongSaga() {
   yield takeEvery("songs/editSongFetch", editsong);
 }
@@ -62,12 +64,11 @@ function* deletesong(action) {
   }
 }
 
+// delete song saga
 export function* deleteSongSaga() {
   yield takeEvery("songs/deleteSongFetch", deletesong);
 }
 
-//deleteSong
-
 export default function* songSaga() {
-  yield all([getSongsSaga(), addSongSaga(), editSongSaga(), deleteSongSaga]);
+  yield all([getSongsSaga(), addSongSaga(), editSongSaga(), deleteSongSaga()]);
 }
