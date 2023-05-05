@@ -1,13 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { call, all, put, takeEvery, takeLatest } from "redux-saga/effects";
 import {
-  getSongsFailure,
   getSongsSuccess,
+  getSongsFailure,
   addSongSuccess,
   addSongFailure,
+  editSongSuccess,
+  editSongFailure,
+  deleteSongSuccess,
+  deleteSongFailure,
 } from "../state/SongState";
 
-import { addSong, getAllSongs } from "../api/API";
+import { addSong, editSong, getAllSongs, deleteSong } from "../api/API";
 
 function* getSongs() {
   try {
@@ -36,6 +40,34 @@ export function* addSongSaga() {
   yield takeEvery("songs/addSongFetch", addsong);
 }
 
+function* editsong(action) {
+  try {
+    const songs = yield editSong(action.payload);
+    yield put(editSongSuccess(songs));
+  } catch (e) {
+    yield put(editSongFailure(e.message));
+  }
+}
+
+export function* editSongSaga() {
+  yield takeEvery("songs/editSongFetch", editsong);
+}
+
+function* deletesong(action) {
+  try {
+    const songs = yield deleteSong(action.payload);
+    yield put(deleteSongSuccess(songs));
+  } catch (e) {
+    yield put(deleteSongFailure(e.message));
+  }
+}
+
+export function* deleteSongSaga() {
+  yield takeEvery("songs/deleteSongFetch", deletesong);
+}
+
+//deleteSong
+
 export default function* songSaga() {
-  yield all([addSongSaga(), getSongsSaga()]);
+  yield all([getSongsSaga(), addSongSaga(), editSongSaga(), deleteSongSaga]);
 }

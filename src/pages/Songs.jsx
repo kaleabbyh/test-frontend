@@ -8,12 +8,12 @@ const Songs = () => {
   const songs = useSelector((state) => state.songs.songs);
 
   useEffect(() => {
-    dispatch(
-      addSongFetch({
-        title: "amazing music",
-        description: "it hipop music you will love it",
-      })
-    );
+    // dispatch(
+    //   addSongFetch({
+    //     title: "amazing music",
+    //     description: "it hipop music you will love it",
+    //   })
+    // );
 
     dispatch(getSongsFetch());
   }, [dispatch]);

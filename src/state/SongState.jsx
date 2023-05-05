@@ -34,7 +34,7 @@ export const songslice = createSlice({
     },
     addSongSuccess: (state, action) => {
       state.isLoading = false;
-      state.songs.push(action.payload);
+      state.songs = [...state.songs, action.payload];
     },
     addSongFailure: (state, action) => {
       state.isLoading = false;
@@ -46,12 +46,29 @@ export const songslice = createSlice({
       state.isLoading = true;
     },
     editSongSuccess: (state, action) => {
+      const songIndex = state.songs.findIndex(
+        (song) => song.id === action.payload.id
+      );
+      state.songs[songIndex] = action.payload;
       state.isLoading = false;
-      state.songs = action.payload;
+      state.error = null;
     },
     editSongFailure: (state, action) => {
       state.isLoading = false;
       state.errorMessage = action.payload;
+    },
+
+    deleteSongFetch: (state) => {
+      state.isLoading = true;
+    },
+    deleteSongSuccess: (state, action) => {
+      state.songs = state.songs.filter((song) => song.id !== action.payload);
+      state.isLoading = false;
+      state.error = null;
+    },
+    deleteSongFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });
@@ -61,13 +78,17 @@ export const {
   getSongsSuccess,
   getSongsFailure,
 
-  addSongFailure,
-  addSongSuccess,
   addSongFetch,
+  addSongSuccess,
+  addSongFailure,
 
-  editSongFailure,
-  editSongSuccess,
   editSongFetch,
+  editSongSuccess,
+  editSongFailure,
+
+  deleteSongFetch,
+  deleteSongSuccess,
+  deleteSongFailure,
 } = songslice.actions;
 
 export default songslice.reducer;
