@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const StyledHeader = styled.header`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  margin: 0;
+  width: 100vw;
   div {
     padding: 20px;
     margin: 0px 10px;
