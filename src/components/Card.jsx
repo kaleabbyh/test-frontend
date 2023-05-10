@@ -1,17 +1,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { Button } from "./style/Button.styled";
 import { StyledCard } from "./style/Card.styled";
 
-export default function Card({ item: { id, title, description, image } }) {
+export default function Card({ item: { title, description, image } }) {
   return (
-    <StyledCard layout={id % 2 === 0 && "row-reverse"}>
+    <StyledCard>
+      <div>
+        <img src={image} alt="" />
+      </div>
       <div>
         <h2>{title}</h2>
         <p>{description}</p>
-      </div>
-
-      <div>
-        <img src="../assets/images/music.jpeg" alt="" />
+        <Button bg="#ff0099" color="#fff">
+          Edit Music
+        </Button>
+        <Button bg="#ff0099" color="#fff">
+          Delete Music
+        </Button>
       </div>
     </StyledCard>
   );
