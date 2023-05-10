@@ -8,7 +8,9 @@ export default function Header() {
   return (
     <StyledHeader>
       <div>
-        <Link to={"/"}>Home</Link>
+        <Link to={"/"}>
+          <h2>Home</h2>
+        </Link>
         <Button bg="#5F1D90" color="#fff" onClick={() => navigate("/addsong")}>
           Add Music
         </Button>

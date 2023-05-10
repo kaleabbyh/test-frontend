@@ -3,8 +3,9 @@ import styled from "@emotion/styled";
 export const StyledHeader = styled.header`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   width: 100vw;
+  margin: 0;
   div {
-    padding: 20px;
+    padding: 10px 20px;
     margin: auto;
     display: flex;
     align-items: center;

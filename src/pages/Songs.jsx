@@ -7,7 +7,7 @@ import {
   deleteSongFetch,
   getSongsFetch,
 } from "../state/SongState";
-// import contents from "../contents";
+
 import { Container } from "../components/style/Container.styled";
 import Card from "../components/Card";
 

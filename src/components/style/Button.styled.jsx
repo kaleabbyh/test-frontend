@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Button = styled.button`
-  border-radius: 50px;
+  border-radius: 20px;
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   cursor: pointer;
