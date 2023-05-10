@@ -2,37 +2,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "@emotion/styled";
+
 import { getSongsFetch, addSongFetch } from "../state/SongState";
-
-const StyledInput = styled.input`
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-
-  color: #333;
-  margin-bottom: 20px;
-  &:focus {
-    outline: none;
-    border-color: #5f9ea0;
-  }
-`;
-
-const StyledForm = styled.form`
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  width:100%
-  margin:100px;
-  color: #333;
-  display: flex;
-  flex-direction: column;
- 
-`;
+import { Button } from "../components/style/Button.styled";
+import { StyledForm, StyledInput } from "../components/style/Form.styled";
+import { useNavigate } from "react-router-dom";
 
 const AddSong = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -99,7 +76,14 @@ const AddSong = () => {
           required
         />
 
-        <button type="submit">Submit</button>
+        <Button
+          bg="#4C0182"
+          color="#ffff"
+          type="submit"
+          onClick={() => navigate("/")}
+        >
+          add song
+        </Button>
       </StyledForm>
     </div>
   );

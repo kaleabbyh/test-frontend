@@ -37,7 +37,7 @@ export default function Card({ item: { _id, title, description, image } }) {
         <h2>{title}</h2>
         <p>{description}</p>
         <Button
-          bg="#ff0099"
+          bg="#5F1D90"
           color="#fff"
           onClick={() => navigate(`/editsong/${_id}`)}
         >
