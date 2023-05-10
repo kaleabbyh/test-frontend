@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
   width: 100vw;
   div {
     padding: 20px;
-    margin: 0px 10px;
+    margin: auto;
     display: flex;
     align-items: center;
     flex-direction: row;

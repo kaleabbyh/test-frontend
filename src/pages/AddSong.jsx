@@ -5,7 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getSongsFetch, addSongFetch } from "../state/SongState";
 import { Button } from "../components/style/Button.styled";
-import { StyledForm, StyledInput } from "../components/style/Form.styled";
+import {
+  StyledForm,
+  StyledInput,
+  StyledTextArea,
+} from "../components/style/Form.styled";
 import { useNavigate } from "react-router-dom";
 
 const AddSong = () => {
@@ -41,6 +45,7 @@ const AddSong = () => {
     };
     console.log(musicData);
     dispatch(addSongFetch(musicData));
+    navigate("/");
   };
 
   return (
@@ -56,16 +61,6 @@ const AddSong = () => {
           required
         />
 
-        <label htmlFor="description">Description:</label>
-        <StyledInput
-          type="text"
-          id="description"
-          name="description"
-          value={description}
-          onChange={onChange}
-          required
-        />
-
         <label htmlFor="image">Image:</label>
         <StyledInput
           type="text"
@@ -75,13 +70,17 @@ const AddSong = () => {
           onChange={onChange}
           required
         />
+        <label htmlFor="description">Description:</label>
+        <StyledTextArea
+          type="text"
+          id="description"
+          name="description"
+          value={description}
+          onChange={onChange}
+          required
+        ></StyledTextArea>
 
-        <Button
-          bg="#4C0182"
-          color="#ffff"
-          type="submit"
-          onClick={() => navigate("/")}
-        >
+        <Button bg="#4C0182" color="#ffff" type="submit">
           add song
         </Button>
       </StyledForm>

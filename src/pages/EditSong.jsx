@@ -3,17 +3,23 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getSongsFetch, addSongFetch, editSongFetch } from "../state/SongState";
+import { getSongsFetch, editSongFetch } from "../state/SongState";
 import { Button } from "../components/style/Button.styled";
-import { StyledForm, StyledInput } from "../components/style/Form.styled";
+import {
+  StyledForm,
+  StyledInput,
+  StyledTextArea,
+} from "../components/style/Form.styled";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditSong = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const songs = useSelector((state) => state.songs.songs);
+
+  const { songs, isLoading } = useSelector((state) => state.songs);
   const song = songs.filter((song) => song._id === id);
-  console.log(song[0]);
+  console.log(songs);
+
   const [formData, setFormData] = useState({
     title: song[0].title,
     description: song[0].description,
@@ -45,6 +51,7 @@ const EditSong = () => {
     };
     console.log(musicData);
     dispatch(editSongFetch(musicData));
+    navigate("/");
   };
 
   return (
@@ -60,16 +67,6 @@ const EditSong = () => {
           required
         />
 
-        <label htmlFor="description">Description:</label>
-        <StyledInput
-          type="text"
-          id="description"
-          name="description"
-          value={description}
-          onChange={onChange}
-          required
-        />
-
         <label htmlFor="image">Image:</label>
         <StyledInput
           type="text"
@@ -80,12 +77,17 @@ const EditSong = () => {
           required
         />
 
-        <Button
-          bg="#4C0182"
-          color="#ffff"
-          type="submit"
-          onClick={() => navigate("/")}
-        >
+        <label htmlFor="description">Description:</label>
+        <StyledTextArea
+          type="text"
+          id="description"
+          name="description"
+          value={description}
+          onChange={onChange}
+          required
+        ></StyledTextArea>
+
+        <Button bg="#4C0182" color="#ffff" type="submit">
           update song
         </Button>
       </StyledForm>
