@@ -8,25 +8,24 @@ import {
   editSongFetch,
   addSongFetch,
   deleteSongFetch,
-} from "../../state/SongState";
+} from "../state/SongState";
 
-const Songs = () => {
+const AddSong = () => {
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs);
 
   useEffect(() => {
     const song = {
-      _id: "6455066c3625e4a665e06c63",
+      _id: "6455250e180a6a49b95e68ff",
+      title: "updated",
+      description: "it hipop music you will love it",
     };
 
     dispatch(getSongsFetch());
-    // dispatch(editSongFetch(song));
-    // dispatch(addSongFetch(song));
-    // dispatch(deleteSongFetch(song));
   }, [dispatch]);
   console.log("holla", songs);
 
   return <div></div>;
 };
 
-export default Songs;
+export default AddSong;

@@ -15,8 +15,8 @@ import { addSong, editSong, getAllSongs, deleteSong } from "../api/API";
 
 function* getSongs() {
   try {
-    const songs = yield getAllSongs();
-    yield put(getSongsSuccess(songs));
+    const songs = yield call(getAllSongs);
+    yield put(getSongsSuccess(songs.data));
   } catch (e) {
     yield put(getSongsFailure(e.message));
   }
@@ -28,9 +28,8 @@ export function* getSongsSaga() {
 
 function* addsong(action) {
   try {
-    const song = action.payload;
-    const songs = yield addSong(song);
-    yield put(addSongSuccess(songs));
+    const songs = yield call(addSong, action.payload);
+    yield put(addSongSuccess(songs.data));
   } catch (e) {
     yield put(addSongFailure(e.message));
   }
@@ -43,8 +42,8 @@ export function* addSongSaga() {
 
 function* editsong(action) {
   try {
-    const songs = yield editSong(action.payload);
-    yield put(editSongSuccess(songs));
+    const songs = yield call(editSong, action.payload);
+    yield put(editSongSuccess(songs.data));
   } catch (e) {
     yield put(editSongFailure(e.message));
   }
