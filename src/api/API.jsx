@@ -1,21 +1,21 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 
+const baseUrl = "https://addissoftware-test-api.onrender.com/api/song";
+
 export const getAllSongs = () => {
-  return axios.get("http://localhost:5000/api/song/getAllSongs");
+  return axios.get(`${baseUrl}/getAllSongs`);
 };
 
 export const addSong = async (song) => {
-  return axios.post(`http://localhost:5000/api/song/addSong`, song);
+  return axios.post(`${baseUrl}/addSong`, song);
 };
 
 export const editSong = async (song) => {
-  return axios.put(`http://localhost:5000/api/song/editSong/${song._id}`, song);
+  return axios.put(`${baseUrl}/editSong/${song._id}`, song);
 };
 
 export const deleteSong = async (song) => {
-  const deleteSong = await axios.delete(
-    `http://localhost:5000/api/song/deleteSong/${song._id}`
-  );
+  const deleteSong = await axios.delete(`${baseUrl}/deleteSong/${song._id}`);
   return deleteSong.data;
 };

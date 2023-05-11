@@ -24,7 +24,7 @@ export default function Card({ item: { _id, title, description, image } }) {
   const handleDelete = (id) => {
     dispatch(deleteSongFetch({ _id: id }));
     navigate("/");
-    window.location.reload();
+    // window.location.reload();
   };
 
   const navigate = useNavigate();
