@@ -7,15 +7,15 @@ export const getAllSongs = () => {
   return axios.get(`${baseUrl}/getAllSongs`);
 };
 
-export const addSong = async (song) => {
+export const addSong = (song) => {
   return axios.post(`${baseUrl}/addSong`, song);
 };
 
-export const editSong = async (song) => {
+export const editSong = (song) => {
   return axios.put(`${baseUrl}/editSong/${song._id}`, song);
 };
 
-export const deleteSong = async (song) => {
-  const deleteSong = await axios.delete(`${baseUrl}/deleteSong/${song._id}`);
+export const deleteSong = (song) => {
+  const deleteSong = axios.delete(`${baseUrl}/deleteSong/${song._id}`);
   return deleteSong.data;
 };
