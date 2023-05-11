@@ -21,10 +21,10 @@ export default function Card({ item: { _id, title, description, image } }) {
     dispatch(getSongsFetch());
   }, [dispatch]);
 
-  const handleDelete = (id) => {
-    dispatch(deleteSongFetch({ _id: id }));
-    navigate("/");
-    // window.location.reload();
+  const handleDelete = async (id) => {
+    await dispatch(deleteSongFetch({ _id: id }));
+
+    window.location.reload();
   };
 
   const navigate = useNavigate();
