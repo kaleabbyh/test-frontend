@@ -7,11 +7,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addSongFetch,
-  deleteSongFetch,
-  getSongsFetch,
-} from "../state/SongState";
+import { deleteSongFetch, getSongsFetch } from "../state/SongState";
 
 export default function Card({ item: { _id, title, description, image } }) {
   const dispatch = useDispatch();
@@ -23,7 +19,6 @@ export default function Card({ item: { _id, title, description, image } }) {
 
   const handleDelete = async (id) => {
     await dispatch(deleteSongFetch({ _id: id }));
-
     window.location.reload();
   };
 
