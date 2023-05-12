@@ -13,8 +13,8 @@ import Card from "../components/Card";
 
 const Songs = () => {
   const dispatch = useDispatch();
-  const { songs } = useSelector((state) => state.songs.songs);
-  const allSongs = songs.reverse();
+  const songs = useSelector((state) => state.songs.songs);
+  let reversedArr = songs.slice().reverse();
 
   useEffect(() => {
     dispatch(getSongsFetch());
@@ -22,7 +22,7 @@ const Songs = () => {
 
   return (
     <Container>
-      {allSongs.map((item, index) => (
+      {reversedArr.map((item, index) => (
         <Card key={index} item={item} />
       ))}
     </Container>
